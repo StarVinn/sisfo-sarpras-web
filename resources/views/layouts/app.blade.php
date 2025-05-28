@@ -69,7 +69,7 @@
                         <a href="{{ route('admin.barang.export') }}" class="block px-4 py-2 rounded hover:bg-blue-800">Laporan Barang</a>
                         <a href="{{ route('admin.category.export') }}" class="block px-4 py-2 rounded hover:bg-blue-800">Laporan Kategori</a>
                         <a href="{{ route('admin.peminjaman.export') }}" class="block px-4 py-2 rounded hover:bg-blue-800">Laporan Peminjaman</a>
-                        <a href="{{ route('admin.user.export') }}" class="block px-4 py-2 rounded hover:bg-blue-800">Laporan Akun User</a>
+                        {{-- <a href="{{ route('admin.user.export') }}" class="block px-4 py-2 rounded hover:bg-blue-800">Laporan Akun User</a> --}}
                     </div>
                 </div>
             </nav>
