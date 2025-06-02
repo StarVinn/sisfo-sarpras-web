@@ -22,13 +22,13 @@ class BarangSeeder extends Seeder
                 'category_id' => 2,
                 'image' => 'barang_images/ZzrjBP4TDfojKpHQa4yip5ugL5aLmX3ZgYgwwH4f.jpg',
             ],
-            // [
-            //     'nama' => 'Pensil',
-            //     'quantity' => 10,
-            //     'kondisi' => 'Baik',
-            //     'category_id' => 1,
-            //     'image' => 'ZzrjBP4TDfojKpHQa4yip5ugL5aLmX3ZgYgwwH4f.jpg',
-            // ],
+            [
+                'nama' => 'Pensil',
+                'quantity' => 10,
+                'kondisi' => 'Baik',
+                'category_id' => 1,
+                'image' => 'barang_images\TzxSUHYbmF0uW47leRcIfzHbp8BRZJOFoKEcXZLW.jpg',
+            ],
             
         ];
         foreach ($barang as $data) {

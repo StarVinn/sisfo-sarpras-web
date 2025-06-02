@@ -5,7 +5,6 @@
 
 @section('content')
     <div class="bg-white shadow-md rounded-lg p-6">
-        
         <h5 class="text-3xl font-bold mb-4">Detail Pengembalian</h5>
         <p class="mb-2"><span class="font-semibold">Peminjam:</span> {{ $pengembalian->peminjaman->user->name }}</p>
         <p class="mb-2"><span class="font-semibold">Barang:</span> {{ $pengembalian->peminjaman->barang->nama ?? "Barang Tidak Ada"}}</p>
@@ -48,10 +47,19 @@
         <a href="{{ route('admin.peminjaman.index') }}" class="inline-block bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
             Kembali
         </a>
-        @if ($pengembalian->denda_id == null && strtolower($pengembalian->kondisi_barang) == 'rusak')
-        <a href="{{ route('admin.pengembalian.form-denda', $pengembalian->id) }}" class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Berikan Denda
-        </a>
-        @endif
+        <div class="inline-flex space-x-4 items-center">
+            @if ($pengembalian->denda_id == null)
+                 <a href="{{ route('admin.pengembalian.form-denda', $pengembalian->id) }}" class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Berikan Denda
+            </a>
+            @endif
+           
+            @if ($pengembalian->denda_id)
+                <form action="{{ route('admin.pengembalian.removeDenda', $pengembalian->id) }}" method="POST" onsubmit="return confirm('Apakah denda yang dimiliki sudah dibayar?');" >
+                    @csrf
+                    <button type="submit" class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Hapus Denda</button>
+                </form>
+            @endif
+        </div>
     </div>
 @endsection

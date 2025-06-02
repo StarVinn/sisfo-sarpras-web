@@ -40,9 +40,9 @@
                 x-show="open"
                 x-transition
                 class="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg z-50 text-black"
-            >
-<a href="{{ route('user.tentang_kami') }}" class="block px-4 py-2 hover:bg-gray-200">Tentang Kami</a>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-200">Hubungi Kami</a>
+            >   
+                <a href="{{ route('user.tentang_kami') }}" class="block px-4 py-2 hover:bg-gray-200">Tentang Kami</a>
+                <a href="{{ route('user.hubungi-kami') }}" class="block px-4 py-2 hover:bg-gray-200">Hubungi Kami</a>
                 @auth
                     <form action="{{ route('logout') }}" method="POST" class="m-0">
                         @csrf
@@ -58,6 +58,7 @@
 
     <div id="content" class="container mx-auto p-4">
         @yield('content')
+        
     </div>
 
     

@@ -35,6 +35,9 @@
                         Alasan Peminjaman
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                        Denda
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
                         Status
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
@@ -51,6 +54,7 @@
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->kelas_peminjam }}</td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->tanggal_peminjaman }}</td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->alasan_peminjam }}</td>
+                        <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->pengembalian->denda->name ?? 'Tidak Ada Denda' }}</td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                             @if ($peminjaman->status == 'peminjaman ditolak' || $peminjaman->status == 'pengembalian ditolak')
                                 <span class="relative inline-block px-3 py-1 font-semibold text-red-600 leading-tight">
@@ -74,7 +78,7 @@
                                 @if ($peminjaman->status == 'waiting peminjaman')
                                     <form action="{{ route('admin.peminjaman.konfirmasi-pinjam', $peminjaman->id) }}" method="POST" class="inline-block">
                                         @csrf
-                                        <button type="submit" class="bg-green-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Konfirmasi Peminjaman</button>
+                                        <button type="submit" class="bg-green-500 hover:bg-yellow-700 text-white font-bold py-2 px-4     rounded">Konfirmasi Peminjaman</button>
                                     </form>
                                     <a href="{{ route('admin.peminjaman.form-tolak', $peminjaman->id) }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Tolak Peminjaman</a>
                                 @elseif ($peminjaman->status == 'waiting pengembalian')

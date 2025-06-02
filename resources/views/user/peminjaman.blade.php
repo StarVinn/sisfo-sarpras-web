@@ -22,6 +22,9 @@
                         Tanggal Peminjaman
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                        Denda
+                    </th>
+                    <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
                         Status
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
@@ -36,6 +39,7 @@
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->barang->nama }}</td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->kelas_peminjam }}</td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->tanggal_peminjaman }}</td>
+                        <td class="px-5 py-5 border-b border-gray-200 text-sm">{{ $peminjaman->pengembalian->denda->name ?? 'Tidak Ada' }}</td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                             @if ($peminjaman->status == 'peminjaman ditolak' || $peminjaman->status == 'pengembalian ditolak')
                                 <span class="relative inline-block px-3 py-1 font-semibold text-red-600 leading-tight">
@@ -59,12 +63,12 @@
                             @if ($peminjaman->status == 'Dipinjam')
                                 <a href="{{ route('user.pengembalian.form', $peminjaman->id) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Kembalikan Barang</a>
                             @elseif ($peminjaman->status == 'Dikembalikan')
-                                <a href="{{ route('user.pengembalian.detail', $peminjaman->id ) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail Kembali</a>
+                                <a href="{{ route('user.pengembalian.detail', $peminjaman->id ) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Detail Kembali</a>
                             @elseif ($peminjaman->status == 'peminjaman ditolak')
-                                <a href="{{ route('user.peminjaman.ditolak' , ['id' => $peminjaman->id]) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail Penolakan</a>
+                                <a href="{{ route('user.peminjaman.ditolak' , ['id' => $peminjaman->id]) }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Detail Penolakan</a>
                             @elseif ($peminjaman->status == 'pengembalian ditolak')
-                                <a href="{{ route('user.peminjaman.ditolak' , ['id' => $peminjaman->id]) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail Penolakan</a>
-                                <a href="{{ route('user.pengembalian.form', $peminjaman->id) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Kembalikan Barang</a>
+                                <a href="{{ route('user.peminjaman.ditolak' , ['id' => $peminjaman->id]) }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Detail Penolakan</a>
+                                <a href="{{ route('user.pengembalian.form', $peminjaman->id) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Kembalikan Ulang</a>
                             @endif
                         </td>
                     </tr>

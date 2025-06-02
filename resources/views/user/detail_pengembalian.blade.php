@@ -5,11 +5,7 @@
 
 @section('content')
     <div class="bg-white shadow-md rounded-lg p-6">
-        {{-- @if ($peminjaman->status == '')
-            
-        @else
-            
-        @endif --}}
+        
         <h5 class="text-2xl font-bold mb-4">Detail Pengembalian</h5>
         <p class="mb-2"><span class="font-semibold">Peminjam:</span> {{ $pengembalian->peminjaman->user->name }}</p>
         <p class="mb-2"><span class="font-semibold">Barang:</span> {{ $pengembalian->peminjaman->barang->nama ?? "Barang Tidak Ada"}}</p>

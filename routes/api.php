@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\BarangController;
-use App\Http\Controllers\Api\SetlistController;
 use App\Http\Controllers\API\PeminjamanController;
 
 // Route Mobile User

@@ -35,12 +35,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/home', function () {
         return view('user.home');
     })->name('user.home');
+
     Route::get('/user/barang', [
         \App\Http\Controllers\BarangController::class, 'indexuser'
     ])->name('user.barang');
-    Route::get('/tentang-kami', function () {
+
+    Route::get('/user/tentang-kami', function () {
         return view('user.tentang_kami');
     })->name('user.tentang_kami');
+
+    Route::get('/user/hubungi-kami', function () {
+        return view('user.hubungi_kami');
+    })->name('user.hubungi-kami');
+
     Route::get('/user/peminjaman/riwayat', [PeminjamanController::class, 'riwayatPeminjaman'])->name('user.peminjaman.riwayat');     
     Route::get('/user/peminjaman/pinjam', [PeminjamanController::class, 'create'])->name('user.peminjaman.pinjam');     
     Route::post('/user/peminjaman/pinjam', [PeminjamanController::class, 'pinjamBarang'])->name('user.peminjaman.pinjam.store');      
@@ -87,6 +94,8 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () 
     Route::get('/pengembalian/{id}', [PeminjamanController::class, 'detailPengembalian'])->name('admin.pengembalian.detail'); 
     Route::get('/pengembalian/{id}/denda', [PeminjamanController::class, 'formDenda'])->name('admin.pengembalian.form-denda');
     Route::post('/pengembalian/{id}/denda', [PeminjamanController::class, 'applyDenda'])->name('admin.pengembalian.applyDenda');
+    Route::post('/pengembalian/{id}/hapus-denda', [PeminjamanController::class, 'removeDenda'])->name('admin.pengembalian.removeDenda');
+
     // Denda CRUD routes
     Route::get('/denda', [DendaController::class, 'index'])->name('admin.denda.index');
     Route::get('/denda/create', [DendaController::class, 'create'])->name('admin.denda.form-create');
@@ -96,5 +105,5 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () 
     Route::delete('/denda/{denda}', [DendaController::class, 'destroy'])->name('admin.denda.delete');
 
     // tolak peminjaman
-    Route::get('/peminjaman/ditolak', [PeminjamanController::class, 'rejectedPeminjaman'])->name('admin.peminjaman.ditolak');
+    Route::get('/peminjaman/ditolak/{id}', [PeminjamanController::class, 'rejectedPeminjaman'])->name('admin.peminjaman.ditolak');
 });

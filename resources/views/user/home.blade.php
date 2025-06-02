@@ -77,6 +77,7 @@
 </head>
 <body>
     @section('content')
+    <p>Selamat datang, {{ Auth::user()->name }}!</p>
 
     <div class="slider-container" id="slider">
     <div class="slide"><img src="{{ asset('tb.jpg') }}" alt="1"></div>
@@ -119,8 +120,27 @@
     }, 5000);
     </script>
 
-    <h1 class="text-3xl font-bold">User Home</h1>
-    <p>Selamat datang, {{ Auth::user()->name }}!</p>
+
+    <br><br>
+    <h1 class="text-3xl font-bold">About School</h1>
+    <br>
+    <div class="flex flex-wrap -mx-2">
+      <div class="w-1/2 px-2 mb-4">
+          <img src="{{ asset('tjkt.jpg') }}" class="w-full">
+      </div>
+      <div class="w-1/2 px-2 mb-4">
+          <img src="{{ asset('animasi.jpg') }}" class="w-full">
+      </div>
+      <div class="w-1/2 px-2 mb-4">
+          <img src="{{ asset('pplg.jpg') }}" class="w-full">
+      </div>
+      <div class="w-1/2 px-2 mb-4">
+          <img src="{{ asset('brf.jpg') }}" class="w-full">
+      </div>
+      <div class="w-1/2 px-2 mb-4">
+          <img src="{{ asset('te.jpg') }}" class="w-full">
+      </div>
+  </div>
 @endsection
 
 </body>

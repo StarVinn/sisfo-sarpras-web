@@ -39,7 +39,7 @@
         @foreach ($barangs as $barang)
             <tr>
                 <td class="border px-4 py-2">{{ $loop->iteration }}</td>
-                <td class="border px-4 py-2"><img src="{{ asset('storage/barang_images/' . $barang->image) }}" alt="{{ $barang->nama }}" class="w-16 h-16 object-cover"></td>
+                <td class="border px-4 py-2"><img src="{{ asset('storage/' . $barang->image) }}" alt="{{ $barang->nama }}" class="w-16 h-16 object-cover"></td>
                 <td class="border px-4 py-2">{{ $barang->nama }}</td>
                 <td class="border px-4 py-2">{{ $barang->quantity }}</td>
                 <td class="border px-4 py-2">{{ $barang->kondisi }}</td>

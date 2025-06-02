@@ -18,7 +18,7 @@ class PeminjamanController extends Controller
     // Method untuk menampilkan daftar peminjaman (khusus admin)
     public function index()
     {
-        $peminjamen = Peminjaman::with('user', 'barang')->get(); // Eager load relasi
+        $peminjamen = Peminjaman::with('user', 'barang', 'pengembalian')->get(); // Eager load relasi including pengembalian
         return view('admin.peminjaman', compact('peminjamen')); // Menggunakan view admin.peminjaman
     }
     public function create(){
@@ -30,7 +30,7 @@ class PeminjamanController extends Controller
     public function riwayatPeminjaman()
     {
         $user = Auth::user();
-        $peminjamen = Peminjaman::where('user_id', $user->id)->with('barang')->get();
+        $peminjamen = Peminjaman::where('user_id', $user->id)->with('barang', 'pengembalian')->get();
         return view('user.peminjaman', compact('peminjamen'));  // Menggunakan view user.peminjaman
     }
 
@@ -210,18 +210,19 @@ class PeminjamanController extends Controller
          $pengembalian = Pengembalian::where('peminjaman_id',$id)->with('peminjaman.user', 'peminjaman.barang')->firstOrFail(); // Eager load relasi
          return view('user.detail_pengembalian', compact('pengembalian')); // Menggunakan view user.detail_pengembalian
      }
-     // detail peminjaman
-     public function rejectedPeminjaman()
+     // detail peminjaman/pengembalian ditolak
+     public function rejectedPeminjaman($id)
      {
          $peminjamen = Peminjaman::whereIn('status', ['peminjaman ditolak', 'pengembalian ditolak'])
-             ->whereNotNull('alasan_penolakan')
+        ->where('id', $id)    
+         ->whereNotNull('alasan_penolakan')
              ->with('user', 'barang')
              ->get();
 
          return view('admin.detail_penolakan', compact('peminjamen'));
      }
 
-     // detail peminjaman
+     // detail peminjaman/pengembalian ditolak (user)
     public function userRejectedPeminjamanDetail($id)
     {
         $user = Auth::user();
@@ -253,6 +254,20 @@ class PeminjamanController extends Controller
         $pengembalian->save();
 
         return redirect()->route('admin.peminjaman.index')->with('success', 'Denda berhasil diterapkan pada pengembalian.');
+    }
+    // method hapus denda jika sudah dibayar
+    public function removeDenda($pengembalianId)
+    {
+        $pengembalian = Pengembalian::findOrFail($pengembalianId);
+
+        if ($pengembalian->denda_id === null) {
+            return redirect()->back()->with('info', 'Tidak ada denda yang diterapkan pada pengembalian ini.');
+        }
+
+        $pengembalian->denda_id = null;
+        $pengembalian->save();
+
+        return redirect()->route('admin.peminjaman.index')->with('success', 'Denda berhasil dihapus dari pengembalian.');
     }
     //export data peminjaman
     public function export(){
