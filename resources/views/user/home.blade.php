@@ -77,7 +77,7 @@
 </head>
 <body>
     @section('content')
-    <p>Selamat datang, {{ Auth::user()->name }}!</p>
+    <p class="font-bold">Welcome....  {{ Auth::user()->name }}!</p>
 
     <div class="slider-container" id="slider">
     <div class="slide"><img src="{{ asset('tb.jpg') }}" alt="1"></div>

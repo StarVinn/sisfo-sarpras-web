@@ -21,7 +21,7 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => ['required', 'min:4'],
             'email' => ['required', 'email', 'unique:users,email'], // Pastikan email unik
-            'password' => ['required', 'min:2'],
+            'password' => ['required'],
         ]);
 
         $user = new User();
@@ -31,6 +31,6 @@ class RegisterController extends Controller
         $user->role = 'user'; // Role otomatis sebagai 'user'
 
         $user->save();
-        return redirect()->route('login')->with('success', 'Registrasi berhasil, silakan login.');   
+        return redirect()->route('admin.index')->with('success', 'Registrasi berhasil, silakan login.');   
     }
 }

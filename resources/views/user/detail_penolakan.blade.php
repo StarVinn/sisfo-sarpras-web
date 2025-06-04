@@ -15,7 +15,7 @@
             <p class="mb-2"><strong>Nama Peminjam: </strong>{{ $peminjaman->user->name ?? 'N/A' }}</h5>
             <p class="mb-2"><strong>Kelas Peminjam:</strong> {{ $peminjaman->kelas_peminjam }}</p>
             <p class="mb-2"><strong>Alasan Peminjam:</strong> {{ $peminjaman->alasan_peminjam }}</p>
-            <p class="mb-2"><strong>Alasan Penolakan:</strong> {{ $peminjaman->alasan_penolakan }}</p>
+            <p class="mb-2 font-semibold text-red-500"><strong>Alasan Penolakan:</strong> {{ $peminjaman->alasan_penolakan }}</p>
             <p class="mb-2"><strong>Tanggal Peminjaman: {{ $peminjaman->tanggal_peminjaman }}</strong></p>
             <p class="mb-2"><strong>Status: {{ $peminjaman->status }}</strong></p>
             <a href="{{ url()->previous() }}" 

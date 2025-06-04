@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-image: url('tb.jpg');
+            background-image: url('{{ asset('tb.jpg') }}');
             background-size: cover;
             background-position: center;
         }
@@ -26,7 +26,7 @@
     <!-- Right side with register form -->
     <div class="w-1/2 flex justify-end items-center opacity-70">
         <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-            <img src="{{ url('logotb.png') }}" alt="Logo" class="mx-auto mb-6 w-40 h-auto opacity-70" />
+            <img src="{{ asset('logotb.png') }}" alt="Logo" class="mx-auto mb-6 w-40 h-auto opacity-70" />
             <h2 class="text-2xl font-bold text-center text-sky-500 mb-4">Register</h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -56,7 +56,7 @@
                 </button>
             </form>
             <p class="text-center text-sm text-gray-500 mt-4">
-                Sudah punya akun? <a href="{{ route('login') }}" class="text-sky-700 font-semibold hover:underline">Login di sini</a>
+                <a href="{{ route('admin.index') }}" class="text-sky-700 font-semibold hover:underline">Kembali</a>
             </p>
         </div>
     </div>
