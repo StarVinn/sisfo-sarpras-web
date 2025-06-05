@@ -41,7 +41,7 @@
 <script>
     const ctx = document.getElementById('peminjamanChart').getContext('2d');
     const peminjamanChart = new Chart(ctx, {
-        type: 'pie',
+        type: 'line',
         data: {
             labels: @json($months),
             datasets: [{

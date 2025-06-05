@@ -56,7 +56,7 @@
                 <a href="{{ route('admin.category.index') }}" class="block px-4 py-2 rounded hover:bg-blue-900">Kategori</a>
                 <a href="{{ route('admin.peminjaman.index') }}" class="block px-4 py-2 rounded hover:bg-blue-900">Peminjaman</a>
                 <a href="{{ route('admin.denda.index') }}" class="block px-4 py-2 rounded hover:bg-blue-900">Denda</a>
-                <a href="{{ route('register') }}" class="block px-4 py-2 rounded hover:bg-blue-900">Register Akun User</a>
+                <a href="{{ route('admin.user.index') }}" class="block px-4 py-2 rounded hover:bg-blue-900">Akun User</a>
 
                 <!-- Dropdown Laporan -->
                 <div>

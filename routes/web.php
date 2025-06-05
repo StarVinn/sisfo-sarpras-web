@@ -6,9 +6,11 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -65,8 +67,11 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () 
     Route::post('/register', [RegisterController::class, 'register']);
     
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
-    Route::get('/user/export', [\App\Http\Controllers\UserController::class, 'export'])->name('admin.user.export');
-
+    Route::prefix('user')->group(function (){
+        Route::get('/akun', [UserController::class, 'index' ])->name('admin.user.index');
+        Route::get('/export', [UserController::class, 'export'])->name('admin.user.export');
+        Route::delete('/akun/{id}', [UserController::class, 'destroy'])->name('admin.user.delete');
+    });
     // Route Prefix Barang
     Route::prefix('barang')->group(function (){
         Route::get('/', [BarangController::class, 'index'])->name('admin.barang.index');

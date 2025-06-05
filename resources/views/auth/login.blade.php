@@ -28,6 +28,13 @@
         <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
             <img src="{{ url('logotb.png') }}" alt="Logo" class="mx-auto mb-6 w-40 h-auto"/>
             <h2 class="text-2xl font-bold text-center text-sky-500 mb-4">Login</h2>
+            @if ($errors->any())
+                <div class="text-red-500 mb-4">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-4">
