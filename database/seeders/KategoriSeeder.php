@@ -22,7 +22,7 @@ class KategoriSeeder extends Seeder
                 'name' => 'Elektronik',
             ],
             [
-                'name' => 'Kendaraan',
+                'name' => 'Hardware',
             ],
             [
                 'name' => 'Perabotan',

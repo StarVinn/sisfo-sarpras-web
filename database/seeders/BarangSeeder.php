@@ -17,7 +17,7 @@ class BarangSeeder extends Seeder
         [
             [
                 'nama' => 'Proyektor',
-                'quantity' => 5,
+                'quantity' => 10,
                 'kondisi' => 'Baik',
                 'category_id' => 2,
                 'image' => 'barang_images/ZzrjBP4TDfojKpHQa4yip5ugL5aLmX3ZgYgwwH4f.jpg',

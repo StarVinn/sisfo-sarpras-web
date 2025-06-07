@@ -27,6 +27,12 @@ class UserSeeder extends Seeder
                 'password' => '123',
                 'role' => 'user',
             ],
+            [
+                'name' => 'Gracie',
+                'email' => 'gracie@gmail.com',
+                'password' => '123',
+                'role' => 'user',
+            ],
             // Anda bisa menambahkan data user lain di sini dalam format yang sama
         ];
 

@@ -16,15 +16,29 @@ class DendaSeeder extends Seeder
         $dendas =
         [
             [
-                'id' => 1,
                 'nama' => 'Pecah',
                 'description' => 'Lensa, Badan, dll',
                 'nominal' => 100000,
-            ]
+            ],
+            [
+                'nama' => 'Hilang',
+                'description' => 'Tidak Dikembalikan 30 hari/lebih',
+                'nominal' => 1500000,
+            ],
+            [
+                'nama' => 'Terlambat',
+                'description' => 'Tidak Dikembalikan 1 hari/lebih',
+                'nominal' => 50000,
+            ],
+            [
+                'nama' => 'Kelalaian',
+                'description' => 'Lupa Mengembalikan, Tidak Mencatat Peminjaman',
+                'nominal' => 10000,
+            ],
         ];
         foreach ($dendas as $denda) {
             Denda::updateOrCreate(
-                ['id' => $denda['id']],
+                ['name' => $denda['nama']],
                 [
                     'name' => $denda['nama'],
                     'description' => $denda['description'],
