@@ -63,7 +63,7 @@
                 </button>
             </form>
             <p class="text-center text-sm text-gray-500 mt-4">
-                <a href="{{ route('admin.index') }}" class="text-sky-700 font-semibold hover:underline">Kembali</a>
+                <a href="{{ route('admin.user.index') }}" class="text-sky-700 font-semibold hover:underline">Kembali</a>
             </p>
         </div>
     </div>
